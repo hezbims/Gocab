@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.net.URL
 import java.net.URLEncoder
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -21,6 +20,40 @@ class LaunchWhatsapp @Inject constructor(
         context.startActivity(getWhatsappIntent(KIRIM_PAKET_STRING))
     fun umkm() =
         context.startActivity(instagramIntent)
+
+    fun callOjek(
+        namaPelanggan : String,
+        alamatPenjemputan : String,
+        nomorWhatsapp : String,
+        alamatTujuan : String,
+
+    ){
+        context.startActivity(
+            getWhatsappIntent(
+                message = formatOjekString(
+                    namaPelanggan = namaPelanggan,
+                    alamatPenjemputan = alamatPenjemputan,
+                    nomorWhatsapp = nomorWhatsapp,
+                    alamatTujuan = alamatTujuan
+                )
+            )
+        )
+    }
+
+    private fun formatOjekString(
+        namaPelanggan: String,
+        alamatPenjemputan: String,
+        nomorWhatsapp: String,
+        alamatTujuan: String,
+    ) : String{
+        return context.getString(
+            R.string.wa_text_ojek,
+            namaPelanggan,
+            alamatPenjemputan,
+            nomorWhatsapp,
+            alamatTujuan
+        )
+    }
 
 
     private fun getWhatsappIntent(message : String) =

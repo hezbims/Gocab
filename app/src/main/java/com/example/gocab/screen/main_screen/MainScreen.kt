@@ -1,4 +1,4 @@
-package com.example.gocab.ui.theme
+package com.example.gocab.screen.main_screen
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -27,20 +27,29 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.gocab.MainScreenEvent
 import com.example.gocab.MainViewModel
 import com.example.gocab.R
+import com.example.gocab.route.NavigationRoute
+import com.example.gocab.ui.theme.GocabTheme
 
 @Composable
 fun MainScreen(
-    viewModel : MainViewModel = hiltViewModel()
+    viewModel : MainViewModel = hiltViewModel(),
+    navController : NavHostController,
 ){
-    MainScreen(onEvent = viewModel::onEvent)
+    MainScreen(
+        onEvent = viewModel::onEvent,
+        navController = navController
+    )
 }
 
 @Composable
 private fun MainScreen(
-    onEvent : (MainScreenEvent) -> Unit
+    onEvent : (MainScreenEvent) -> Unit,
+    navController: NavHostController,
 ){
     Column(
         modifier = Modifier
@@ -56,7 +65,8 @@ private fun MainScreen(
         )
 
         LayananScreen(
-            onEvent = onEvent
+            onEvent = onEvent,
+            navController = navController
         )
 
         Footer(
@@ -119,7 +129,8 @@ private fun KartuPilihan(
 
 @Composable
 private fun LayananScreen(
-    onEvent : (MainScreenEvent) -> Unit
+    onEvent : (MainScreenEvent) -> Unit,
+    navController: NavHostController
 ){
     Column(
         verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -169,7 +180,9 @@ private fun LayananScreen(
                     imageId = R.drawable.ojek,
                     label = "Ojek",
                     modifier = Modifier.weight(1f),
-                    onClick = { onEvent(MainScreenEvent.CallOjek) }
+                    onClick = {
+                        navController.navigate(NavigationRoute.formOjekRoute)
+                    }
                 )
 
                 KartuPilihan(
@@ -342,7 +355,8 @@ private fun MainScreenPreview(){
                 .fillMaxSize()
         ) {
             MainScreen(
-                onEvent = {}
+                onEvent = {},
+                navController = rememberNavController()
             )
         }
     }
