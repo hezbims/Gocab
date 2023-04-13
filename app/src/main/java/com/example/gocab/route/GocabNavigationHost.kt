@@ -37,7 +37,8 @@ fun GocabNavigationHost(navController : NavHostController){
                 val viewModel : FormOjekViewModel = hiltViewModel(rootBackStackEntry)
 
                 FormOjekScreen(
-                    viewModel = viewModel
+                    viewModel = viewModel,
+                    navController = navController
                 )
             }
         }
