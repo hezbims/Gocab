@@ -1,6 +1,7 @@
-package com.example.gocab
+package com.example.gocab.screen.main_screen
 
 import androidx.lifecycle.ViewModel
+import com.example.gocab.LaunchWhatsapp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -12,17 +13,11 @@ class MainViewModel @Inject constructor(
         event: MainScreenEvent
     ){
         when(event){
-            MainScreenEvent.CallOjek -> launchWhatsapp.callOjek()
-            MainScreenEvent.CallDeliveryMakananBarang -> launchWhatsapp.callDeliveryMakananBarang()
-            MainScreenEvent.CallKirimPaket -> launchWhatsapp.callKirimPaket()
             MainScreenEvent.Umkm -> launchWhatsapp.umkm()
         }
     }
 }
 
 sealed class MainScreenEvent{
-    object CallOjek : MainScreenEvent()
-    object CallDeliveryMakananBarang : MainScreenEvent()
-    object CallKirimPaket : MainScreenEvent()
     object Umkm : MainScreenEvent()
 }

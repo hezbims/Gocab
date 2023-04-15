@@ -29,8 +29,6 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.gocab.MainScreenEvent
-import com.example.gocab.MainViewModel
 import com.example.gocab.R
 import com.example.gocab.route.NavigationRoute
 import com.example.gocab.ui.theme.GocabTheme
@@ -161,14 +159,18 @@ private fun LayananScreen(
                     imageId = R.drawable.pengantaran,
                     label = "Pengantaran Barang",
                     modifier = Modifier.weight(1f),
-                    onClick = { onEvent(MainScreenEvent.CallKirimPaket) }
+                    onClick = {
+                        navController.navigate(NavigationRoute.formPengantaranBarangRoute)
+                    }
                 )
 
                 KartuPilihan(
                     imageId = R.drawable.pesan_makan,
                     label = "Pesan Makan/Barang",
                     modifier = Modifier.weight(1f),
-                    onClick = { onEvent(MainScreenEvent.CallDeliveryMakananBarang) }
+                    onClick = {
+                        navController.navigate(NavigationRoute.formDeliveryMakananRoute)
+                    }
                 )
             }
             Row(

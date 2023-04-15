@@ -6,17 +6,80 @@
         Selamat datang di Gocab Delivery.\n
         Pesanan anda akan kami proses, isi format untuk order\n\n
 
-        Nama pelanggan : %1$s\n\n
+        Nama pelanggan :\n
+        %1$s\n\n
 
-        Alamat lengkap penjemputan(Rt/rw) : %2$s\n\n
+        Alamat lengkap penjemputan(Rt/rw) :\n
+        %2$s\n\n
 
-        No hp (aktif) : %3$s\n\n
+        No hp (aktif) :\n
+        %3$s\n\n
 
-        Alamat tempat tujuan : %4$s\n\n
+        Alamat tempat tujuan :\n
+        %4$s\n\n
 
         Apabila ada sharelock maps penjemputan maupun tujuan bisa share yah kak\n\n\n
 
 
         Terimakasih mohon tunggu Kakak. Kami tunggu juga orderan selanjutnya❤
+    </string>
+    <string name="wa_text_delivery_makanan">
+        Hai Kakak\n\n
+
+        Selamat datang di Gocab Delivery.\n
+        Pesanan anda akan kami proses, isi format untuk order\n\n
+
+        Nama pelanggan : \n
+        %1$s\n\n
+
+        Alamat lengkap pembelian : \n
+        %2$s\n\n
+
+        No hp (aktif) : \n
+        %5$s\n\n
+
+        Alamat pengiriman :\n
+        %3$s\n\n
+
+        Spesifikasi barang(jumlah,jenis) :\n
+        %4$s\n\n
+
+        Apabila ada sharelock maps pembelian maupun pengiriman bisa di share yah kak\n\n
+
+        Terimakasih mohon tunggu Kakak. Kami tunggu juga orderan selanjutnya❤
+    </string>
+    <string name="wa_text_pengantaran_paket">
+        Hai Kakak\n\n
+
+        Selamat datang di Gocab Delivery.\n
+        Pesanan anda akan kami proses, isi format untuk order\n\n
+
+        Nama pengirim :\n
+        %1$s\n\n
+
+        Alamat lengkap pengambilan :\n
+        %2$s\n\n
+
+        No hp (aktif) pengirim :\n
+        %3$s\n\n
+
+        Nama penerima:\n
+        %4$s\n\n
+
+        Alamat lengkap penerima :\n
+        %5$s\n\n
+
+        No hp (aktif) penerima:\n
+        %6$s\n\n
+
+        Spesifikasi barang(jumlah,jenis) :\n
+        %7$s\n\n
+
+        Apabila ada sharelock maps pengiriman maupun penerima bisa di share yah kak\n\n
+
+        Terimakasih mohon tunggu Kakak. Kami tunggu juga orderan selanjutnya❤
+    </string>
+    <string name="placeholder_no_whatsapp">
+        Nomor Whatsapp\n(ex : 087876884622)
     </string>
 </resources>

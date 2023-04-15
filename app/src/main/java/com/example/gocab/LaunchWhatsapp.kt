@@ -12,12 +12,6 @@ import javax.inject.Singleton
 class LaunchWhatsapp @Inject constructor(
     @ApplicationContext private val context : Context
 ) {
-    fun callOjek() =
-        context.startActivity(getWhatsappIntent(OJEK_STRING))
-    fun callDeliveryMakananBarang() =
-        context.startActivity(getWhatsappIntent(DELIVERY_MAKANAN_BARANG_STRING))
-    fun callKirimPaket() =
-        context.startActivity(getWhatsappIntent(KIRIM_PAKET_STRING))
     fun umkm() =
         context.startActivity(instagramIntent)
 
@@ -26,7 +20,6 @@ class LaunchWhatsapp @Inject constructor(
         alamatPenjemputan : String,
         nomorWhatsapp : String,
         alamatTujuan : String,
-
     ){
         context.startActivity(
             getWhatsappIntent(
@@ -55,6 +48,68 @@ class LaunchWhatsapp @Inject constructor(
         )
     }
 
+    fun callDeliveryMakanan(
+        namaPelanggan: String,
+        alamatPembelian : String,
+        alamatPengantaran : String,
+        detailOrderan : String,
+        noWhatsapp : String
+    ){
+        context.startActivity(
+            getWhatsappIntent(
+                message = formatDeliveryMakananString(
+                    namaPelanggan = namaPelanggan,
+                    alamatPembelian = alamatPembelian,
+                    alamatPengantaran = alamatPengantaran,
+                    detailOrderan = detailOrderan,
+                    nomorWhatsapp = noWhatsapp
+                )
+            )
+        )
+    }
+
+    private fun formatDeliveryMakananString(
+        namaPelanggan: String,
+        alamatPembelian: String,
+        alamatPengantaran: String,
+        detailOrderan: String,
+        nomorWhatsapp: String
+    ) : String{
+        return context.getString(
+            R.string.wa_text_delivery_makanan,
+            namaPelanggan,
+            alamatPembelian,
+            alamatPengantaran,
+            detailOrderan,
+            nomorWhatsapp
+        )
+    }
+
+    fun callKirimPaket(
+        namaPengirim : String,
+        alamatPengambilan : String,
+        noWhatsappPengirim : String,
+        namaPenerima : String,
+        alamatPengantaran : String,
+        noWhatsappPenerima : String,
+        detailPaket : String
+    ){
+        context.startActivity(
+            getWhatsappIntent(
+                message = context.getString(
+                    R.string.wa_text_pengantaran_paket,
+                    namaPengirim,
+                    alamatPengambilan,
+                    noWhatsappPengirim,
+                    namaPenerima,
+                    alamatPengantaran,
+                    noWhatsappPenerima,
+                    detailPaket
+                )
+            )
+        )
+    }
+
 
     private fun getWhatsappIntent(message : String) =
         Intent(Intent.ACTION_VIEW).apply {
@@ -75,67 +130,4 @@ class LaunchWhatsapp @Inject constructor(
         flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
     }
 
-    private companion object{
-        const val KIRIM_PAKET_STRING = """Hai Kakak
-
-Selamat datang di Gocab Delivery.
-Pesanan anda akan kami proses, isi format untuk order
-
-Nama pengirim :
-Alamat lengkap pengirim :
-
-No hp (aktif) pengirim :
-
-
-Nama penerima:
-Alamat lengkap penerima :
-
-No hp (aktif) penerima:
-
-Spesifikasi barang(jumlah,jenis) :
-
-Apabila ada sharelock maps pengiriman maupun penerima bisa di share yah kak
-
-Terimakasih mohon tunggu Kakak. Kami tunggu juga orderan selanjutnya❤"""
-
-
-
-        const val DELIVERY_MAKANAN_BARANG_STRING = """Hai Kakak
-
-Selamat datang di Gocab Delivery.
-Pesanan anda akan kami proses, isi format untuk order
-
-- Nama pelanggan :
-Alamat lengkap pembelian : 
-
-No hp (aktif) :
-
- 
-Alamat pengiriman : 
-
-Spesifikasi barang(jumlah,jenis) : 
-
-Apabila ada sharelock maps pembelian maupun pengiriman bisa di share yah kak
-
-Terimakasih mohon tunggu Kakak. Kami tunggu juga orderan selanjutnya❤"""
-
-
-        const val OJEK_STRING = """Hai Kakak
-
-Selamat datang di Gocab Delivery.
-Pesanan anda akan kami proses, isi format untuk order
-
-- Nama pelanggan :
-Alamat lengkap penjemputan(Rt/rw) : 
-
-No hp (aktif) :
-
- 
-Alamat tempat tujuan : 
-
-Apabila ada sharelock maps penjemputan maupun tujuan bisa share yah kak
-
-
-Terimakasih mohon tunggu Kakak. Kami tunggu juga orderan selanjutnya❤"""
-    }
 }
